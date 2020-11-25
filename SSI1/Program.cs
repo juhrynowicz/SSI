@@ -12,7 +12,24 @@ namespace SSI1
             var czy_atr_symb = new List<bool>();
             var nazwy_atr = new List<string>();
             wczytaj_baze_probek_z_tekstem(@"C:\test\probki.txt", @"C:\test\atrybuty.txt"
-                ,out probki, out czy_atr_symb, out nazwy_atr);
+                , out probki, out czy_atr_symb, out nazwy_atr);
+
+            Console.WriteLine("Próbki:");
+            foreach(var wiersze in probki)
+            {
+                foreach(var probka in wiersze)
+                {
+                    Console.Write(probka + "\t");
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Atrybuty:");
+            for (int i = 0; i < nazwy_atr.Count; i++)
+            {
+                Console.WriteLine($"{nazwy_atr[i]} {czy_atr_symb[i]}");
+            }
             Console.ReadLine();
         }
 
@@ -28,10 +45,10 @@ namespace SSI1
             //próbki
             var plik_z_wartosciami = File.ReadAllLines(nazwa_pliku_z_wartosciami);
 
-            foreach (var line in plik_z_wartosciami)
+            foreach(var line in plik_z_wartosciami)
             {
                 var wiersz_probki = new List<string>();
-                foreach (var cell in line.Split(' ' , '\t'))
+                foreach(var cell in line.Trim().Split(' ', '\t'))
                 {
                     if(string.IsNullOrWhiteSpace(cell))
                         continue;
@@ -44,17 +61,17 @@ namespace SSI1
             //atrybuty
             var plik_z_atrybutami = File.ReadAllLines(nazwa_pliku_z_opisem_atr);
 
-            foreach (var line in plik_z_atrybutami)
+            foreach(var line in plik_z_atrybutami)
             {
-                foreach (var cell in line.Split(' ', '\t'))
+                foreach(var cell in line.Split(' ', '\t'))
                 {
                     if(string.IsNullOrWhiteSpace(cell))
                         continue;
-                    if (cell.Length == 1 && cell == "s")
+                    if(cell.Length == 1 && cell == "s")
                     {
                         czy_atr_symb.Add(true);
                     }
-                    else if (cell.Length == 1 && cell != "s")
+                    else if(cell.Length == 1 && cell != "s")
                     {
                         czy_atr_symb.Add(false);
                     }
