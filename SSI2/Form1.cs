@@ -102,10 +102,10 @@ namespace SSI2
             wartosci_x = new List<double>();
             wartosci_y = new List<double>();
 
-            for(double x = -1; x < 1; x += Math.PI / 720.0)
+            for(double x = -1; x < 1; x += Math.PI / 180)
             {
                 wartosci_x.Add(x);
-                wartosci_y.Add(Math.Sin(x * 1.5 - Math.PI * 1 / 2));
+                wartosci_y.Add(Math.Sin(x * Math.PI / 2 - Math.PI * 1 / 2));
             }
 
             wykres_sinus_rysuj(wartosci_x, wartosci_y);

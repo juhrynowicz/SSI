@@ -9,7 +9,7 @@ namespace SSI4
         static void Main(string[] args)
         {
             var sinsinFunkcja = new SinSinFunction();
-            var algorytm = new Algorithm(sinsinFunkcja, Przedzial);
+            var algorytm = new Algorithm(sinsinFunkcja, (-100,100), Przedzial);
 
             Console.WriteLine(algorytm.Calculate(6.0, 2.3, 100));
             Console.ReadLine();
